@@ -20,6 +20,11 @@ class User extends Authenticatable
     use Notifiable;
     use HasFactory;
 
+    public const STATUS_SELECT = [
+        '1' => 'Active',
+        '2' => 'Suspended',
+    ];
+
     public $table = 'users';
 
     protected $hidden = [
@@ -45,6 +50,7 @@ class User extends Authenticatable
         'verified_at',
         'verification_token',
         'remember_token',
+        'status',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -46,6 +46,9 @@ class StoreUserRequest extends FormRequest
             'communities' => [
                 'array',
             ],
+            'status' => [
+                'required',
+            ],
         ];
     }
 }
