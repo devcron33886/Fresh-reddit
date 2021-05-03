@@ -7,7 +7,7 @@ use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class UpdateUserRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     public function authorize()
     {
@@ -24,11 +24,14 @@ class UpdateUserRequest extends FormRequest
             'username' => [
                 'string',
                 'required',
-                'unique:users,username,' . request()->route('user')->id,
+                'unique:users',
             ],
             'email' => [
                 'required',
-                'unique:users,email,' . request()->route('user')->id,
+                'unique:users',
+            ],
+            'password' => [
+                'required',
             ],
             'roles.*' => [
                 'integer',
@@ -42,6 +45,9 @@ class UpdateUserRequest extends FormRequest
             ],
             'communities' => [
                 'array',
+            ],
+            'status' => [
+                'required',
             ],
         ];
     }
